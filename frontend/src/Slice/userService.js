@@ -2,7 +2,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 
 // const API_URL = process.env.REACT_APP_API_URL;
-const API_URL = 'http://127.0.0.1:8000/api/'
+// const API_URL = 'http://127.0.0.1:8000/api/'
+const api ="http://18.206.67.13/api/"
 
 const register = async (userData) => {   
     const response = await axios.post(`${API_URL}signup/`, userData, {

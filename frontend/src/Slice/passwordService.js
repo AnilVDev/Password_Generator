@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const api ="http://127.0.0.1:8000/api/"
+// const api ="http://127.0.0.1:8000/api/"
+const api ="http://18.206.67.13/api/"
 
 
 const savePassword = async(passwordDetails, accessToken) => {
