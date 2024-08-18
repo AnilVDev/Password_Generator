@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  backend:
+    build:
+      context: ./Backend/password_generator
+    volumes:
+      - ./Backend/password_generator:/app
+      - media:/app/media
+      - static_volume:/app/static			
+    ports:
+      - "8000:8000"
+     
+    # environment:
+    #   - DATABASE_URL=postgres://postgres:123@postgres:5432/socialmedia
+    #   - REDIS_URL=redis://redis:6379/0
+
+
+  nginx:
+    image: nginx:latest 
+    ports: 
+      - 80:8080
+    volumes:
+      - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
+#      - react_build:/var/www/react
+      # - ./Frontend(client)/social-media-client-app/build:/var/www/react
+      - media:/var/www/media
+      - static_volume:/var/www/static
+    depends_on:
+      - backend
+
+volumes:
+  media:
+  static_volume:
